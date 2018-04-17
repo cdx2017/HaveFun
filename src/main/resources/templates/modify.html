@@ -37,8 +37,12 @@
                 <input class="email" type="email" id="email" name="email" ng-model="data.email"
                        placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false"/>
             </div>-->
-
-        <button type="button" ng-click="register()">确定</button>
+        <button type="button" ng-click="send()">发送验证码</button>
+        <div>
+            <input class="username" type="text" id="checkword" name="checkword" ng-model="data.checkword"
+                   placeholder="输入验证码" autocomplete="off"/>
+        </div>
+        <button type="button" ng-click="check()">确定</button>
     </form>
     <a href="index.html">
         <br>

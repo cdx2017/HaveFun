@@ -34,6 +34,12 @@ app.controller('MainController', function ($rootScope, $scope, $http) {
                 alert("手机号码不能为空！")
             } else if (document.getElementById('phonenumber').value.length != 11) {
                 alert("号码位数不对！")
+            } else if (document.getElementById('name').value == "") {
+                alert("用户名不能为空！")
+            } else if (document.getElementById('password').value == "") {
+                alert("密码不能为空！")
+            } else if (document.getElementById('confirm_password').value == "") {
+                alert("确认密码不能为空！")
             } else if (checkword == "") {
                 alert("验证码不能为空！")
             } else
@@ -43,43 +49,32 @@ app.controller('MainController', function ($rootScope, $scope, $http) {
                     data: {"phonenumber": phonenumber, "checkword": checkword}
                 }).success(function (result) {
                         if (result == "204") {
-                            alert("yanzheng 成功！");
+                            $scope.register();
                         } else if (result == "400")
-                            alert("发送失败!");
+                            alert("验证码错误!");
                         else
-                            alert("未知错误！")
+                            alert("验证发生未知错误");
                     }
                 )
         };
 
         //注册
         $scope.register = function () {
-            if (document.getElementById('phonenumber').value == "") {
-                alert("手机号码不能为空！")
-            } else if (document.getElementById('phonenumber').value.length != 11) {
-                alert("号码位数不对！")
-            } else if (document.getElementById('name').value == "") {
-                alert("用户名不能为空！")
-            } else if (document.getElementById('password').value == "") {
-                alert("密码不能为空！")
-            } else if (document.getElementById('confirm_password').value == "") {
-                alert("确认密码不能为空！")
-            } else
-                $http({
-                    url: '/register',
-                    method: 'POST',
-                    data: $scope.data
-                }).success(function (result) {
-                        if (result.phonenumber == "yijingcunzai") {
-                            alert("该号码已经注册！");
-                        } else if (result.length != 0 && result.phonenumber == $scope.data.phonenumber) {
-                            self.location = 'index';
-                        } else
-                            alert("注册失败");
-                    }
-                );
-        };
 
+            $http({
+                url: '/register',
+                method: 'POST',
+                data: $scope.data
+            }).success(function (result) {
+                    if (result.phonenumber == "yijingcunzai") {
+                        alert("该号码已经注册！");
+                    } else if (result.length != 0 && result.phonenumber == $scope.data.phonenumber) {
+                        self.location = 'index';
+                    } else
+                        alert("注册失败");
+                }
+            );
+        };
     }
 )
 ;

@@ -8,16 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 /**
  * Created by Administrator on 2018/4/8.
  */
+
 
 @Controller
 public class MyController {
@@ -93,10 +87,8 @@ public class MyController {
     @PostMapping("/check")
     @ResponseBody
     public String check(@RequestBody Message message) {
-        String strURL = "http://localhost:8080/api/v1/verifyImgCode";
-        String strParam = "imgCode= " + message.getCheckword();
-        String a = HttpUtil.sendPost2(strURL, strParam);
-        System.out.println(a);
-        return a;
+        String strURL = "http://localhost:8080/api/v1/verifySmsCode/"+ message.getPhonenumber();
+        String strParam = "smsCode=" + message.getCheckword();
+        return HttpUtil.sendPost(strURL, strParam);
     }
 }

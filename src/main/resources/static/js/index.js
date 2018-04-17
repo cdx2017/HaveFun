@@ -17,7 +17,7 @@ app.controller('MainController', function ($rootScope, $scope, $http) {
                 }).success(function (result) {
                         if (result.length != 0 && result.name == $scope.data.name
                             && result.password == $scope.data.password) {
-                            self.location = 'register';
+                            /*self.location = 'lead';*/
                         } else
                             alert("用户名或密码错误！")
                     }
