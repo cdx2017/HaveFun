@@ -24,7 +24,8 @@ import org.apache.http.util.EntityUtils;
 import sun.misc.IOUtils;
 
 /**
- * Created by Administrator on 2018/4/10.
+ * @author cdx
+ * @date 2018/4/10
  */
 public class HttpUtil {
     private final static Logger logger = Logger.getLogger(HttpUtil.class);

@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
 /**
- * Created by Administrator on 2018/4/8.
+ * @author cdx
+ * @date 2018/4/8
  */
 
 
@@ -43,6 +45,8 @@ public class MyController {
     @ResponseBody
     public Object login(@RequestBody User uniqueUser) {
         if (userDao.getName(uniqueUser.getName()) != null && userDao.getName(uniqueUser.getName()).getPassword().equals(uniqueUser.getPassword())) {
+            String strURL = "http://localhost:8100/lead?name=" + uniqueUser.getName();
+            uniqueUser.setNextgo(strURL);
             return uniqueUser;
         } else {
             return null;
@@ -87,7 +91,7 @@ public class MyController {
     @PostMapping("/check")
     @ResponseBody
     public String check(@RequestBody Message message) {
-        String strURL = "http://localhost:8080/api/v1/verifySmsCode/"+ message.getPhonenumber();
+        String strURL = "http://localhost:8080/api/v1/verifySmsCode/" + message.getPhonenumber();
         String strParam = "smsCode=" + message.getCheckword();
         return HttpUtil.sendPost(strURL, strParam);
     }

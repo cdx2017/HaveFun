@@ -1,36 +1,18 @@
 package com.example.demo.dto;
 
+import lombok.Data;
+
 /**
- * Created by Administrator on 2018/4/8.
+ *
+ * @author cdx
+ * @date 2018/4/8
  */
+@Data
 public class User {
     private String phonenumber;
     private String name;
     private String password;
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String username) {
-        this.name = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    private String nextgo;
 
     @Override
     public String toString() {
