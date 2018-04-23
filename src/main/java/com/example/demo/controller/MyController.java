@@ -45,7 +45,7 @@ public class MyController {
     @ResponseBody
     public Object login(@RequestBody User uniqueUser) {
         if (userDao.getName(uniqueUser.getName()) != null && userDao.getName(uniqueUser.getName()).getPassword().equals(uniqueUser.getPassword())) {
-            String strURL = "http://localhost:8100/index" + uniqueUser.getName();
+            String strURL = "http://localhost:8100/index";
             uniqueUser.setNextgo(strURL);
             return uniqueUser;
         } else {
